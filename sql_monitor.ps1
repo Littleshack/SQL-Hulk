@@ -8,7 +8,7 @@ $yesterday = (get-date).AddDays(-1)
 $yesterday = $yesterday.ToString("M/d/yyyy")
 
 $con = New-Object System.Data.SqlClient.SqlConnection
-$con.ConnectionString = "Server=nakylexsql105.ashland.ad.ai;Database=DB_Summary;Integrated Security=true;"
+$con.ConnectionString = "Server=nakylexsql105.corpdomain.com;Database=DB_Summary;Integrated Security=true;"
 #$con.ConnectionString = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;"
 $con.open()
 $cmd = New-Object System.Data.SqlClient.SqlCommand
@@ -29,13 +29,13 @@ foreach ($row in $DataSet.Tables[0].Rows) {
 	$blocking = ""
 	$server = $row[0].ToString().Trim()
 	$instance = $row[1].ToString().Trim()
-	#$instance = "nakylexeis501.ashland.ad.ai"
+	
 
 	write-host "Server: " $server "Instance: " $instance
 	try {
 		$con = New-Object System.Data.SqlClient.SqlConnection
 		$con.ConnectionString = "Server=$instance;Database=master;Integrated Security=true;"
-		#$con.ConnectionString = "Server=nakylexeis501.ashland.ad.ai;Database=master;Integrated Security=true;"
+		#$con.ConnectionString = "Server=nakylexeis501.corpdomain.com;Database=master;Integrated Security=true;"
 		$con.open()
 		$cmd = New-Object System.Data.SqlClient.SqlCommand
 		$cmd.connection = $con
