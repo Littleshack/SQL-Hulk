@@ -1,0 +1,208 @@
+USE [DB_Summary]
+GO
+
+/****** Object:  Table [dbo].[Databases]    Script Date: 3/2/2018 8:23:42 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Databases](
+	[did] [int] IDENTITY(1,1) NOT NULL,
+	[iid] [int] NOT NULL,
+	[db_name] [nvarchar](256) NOT NULL,
+	[status] [nvarchar](256) NULL,
+	[collation] [nvarchar](256) NULL,
+	[sql_database_owner] [nvarchar](50) NULL,
+	[compatibility_level] [nvarchar](256) NULL,
+	[autoshrink] [bit] NULL,
+	[recovery_model] [nvarchar](256) NULL,
+	[size] [float] NULL,
+	[space_available] [float] NULL,
+	[backup_type] [nvarchar](50) NULL,
+	[backup_location] [nvarchar](512) NULL,
+	[last_backup] [nvarchar](256) NULL,
+	[users] [nvarchar](4000) NULL,
+	[potential_owners] [nvarchar](4000) NULL,
+	[potential_emails] [nvarchar](4000) NULL,
+	[db_assoc_app] [nvarchar](50) NULL,
+	[db_owner] [nvarchar](50) NULL,
+	[db_owner_id] [nvarchar](10) NULL,
+	[db_purpose] [nvarchar](512) NULL,
+	[db_app_sla] [nvarchar](10) NULL,
+	[db_primary_dev] [nvarchar](50) NULL,
+	[db_category] [nvarchar](256) NULL,
+	[trans_logging] [bit] NULL,
+	[sys_admin_acct] [nvarchar](50) NULL,
+	[est_size] [nvarchar](10) NULL,
+	[potential_growth] [nvarchar](10) NULL,
+	[creationDate] [date] NULL,
+	[createdBy] [nvarchar](10) NULL,
+	[lastUpdatedDate] [date] NULL,
+	[dirty] [bit] NULL,
+	[dbrs_version] [int] NULL,
+	[notes] [nvarchar](4000) NULL,
+	[lastUpdatedBy] [nvarchar](10) NULL,
+	[last_seen] [nvarchar](50) NULL,
+	[version] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[DB_Info]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[DB_Info](
+	[did] [int] IDENTITY(1,1) NOT NULL,
+	[db_name] [nvarchar](50) NOT NULL,
+	[db_assoc_app] [nvarchar](50) NULL,
+	[host_server] [nvarchar](50) NOT NULL,
+	[db_owner] [nvarchar](50) NOT NULL,
+	[db_owner_id] [nvarchar](10) NOT NULL,
+	[db_purpose] [nvarchar](256) NULL,
+	[db_app_sla] [nvarchar](10) NOT NULL,
+	[db_primary_dev] [nvarchar](50) NULL,
+	[db_category] [nvarchar](256) NULL,
+	[trans_logging] [bit] NOT NULL,
+	[sys_admin_acct] [nvarchar](50) NOT NULL,
+	[est_size] [nvarchar](10) NULL,
+	[potential_growth] [nvarchar](10) NULL,
+	[version] [int] NOT NULL,
+	[dirty] [bit] NOT NULL,
+	[active] [bit] NOT NULL,
+	[creationDate] [date] NOT NULL,
+	[createdBy] [nvarchar](10) NOT NULL,
+	[lastUpdatedDate] [date] NOT NULL,
+	[lastUpdatedBy] [nvarchar](10) NOT NULL,
+	[created] [bit] NULL,
+	[blah] [nchar](10) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[Instances]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Instances](
+	[iid] [int] IDENTITY(1,1) NOT NULL,
+	[sid] [int] NOT NULL,
+	[instance_name] [nvarchar](256) NOT NULL,
+	[patch_level] [nvarchar](256) NULL,
+	[database_count] [nvarchar](50) NULL,
+	[max_memory] [nvarchar](256) NULL,
+	[user_running_service] [nvarchar](512) NULL,
+	[default_collation] [nvarchar](128) NULL,
+	[remote_dac_enabled] [int] NULL,
+	[has_allow_updates] [int] NULL,
+	[audit_level] [int] NULL,
+	[last_seen] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[Logins]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Logins](
+	[lid] [int] IDENTITY(1,1) NOT NULL,
+	[iid] [int] NOT NULL,
+	[loginname] [nvarchar](128) NOT NULL,
+	[realname] [nvarchar](512) NULL,
+	[databases] [nvarchar](4000) NULL,
+	[create_date] [nvarchar](512) NULL,
+	[modify_date] [nvarchar](512) NULL,
+	[default_database_name] [nvarchar](512) NULL,
+	[default_language_name] [nvarchar](512) NULL,
+	[has_access] [nvarchar](50) NULL,
+	[is_nt_name] [nvarchar](50) NULL,
+	[is_nt_group] [nvarchar](50) NULL,
+	[is_nt_user] [nvarchar](50) NULL,
+	[is_sysadmin] [nvarchar](50) NULL,
+	[is_securityadmin] [nvarchar](50) NULL,
+	[is_serveradmin] [nvarchar](50) NULL,
+	[is_setupadmin] [nvarchar](50) NULL,
+	[is_processadmin] [nvarchar](50) NULL,
+	[is_diskadmin] [nvarchar](50) NULL,
+	[is_dbcreator] [nvarchar](50) NULL,
+	[is_bulkadmin] [nvarchar](50) NULL,
+	[blank_password] [nvarchar](50) NULL,
+	[last_seen] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[NoAccess]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[NoAccess](
+	[server_name] [nvarchar](50) NOT NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[Servers]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Servers](
+	[sid] [int] IDENTITY(1,1) NOT NULL,
+	[server_name] [nvarchar](256) NOT NULL,
+	[ip_address] [nvarchar](50) NULL,
+	[operating_system] [nvarchar](128) NULL,
+	[physical_mem] [nvarchar](50) NULL,
+	[model] [nvarchar](128) NULL,
+	[domain] [nvarchar](50) NULL,
+	[proc_name] [nvarchar](128) NULL,
+	[max_clock_speed] [nvarchar](128) NULL,
+	[environment] [nvarchar](50) NULL,
+	[num_sockets] [int] NULL,
+	[num_cores] [int] NULL,
+	[logical_disks] [nvarchar](4000) NULL,
+	[status] [nvarchar](128) NULL,
+	[downtime_in_days] [nvarchar](50) NULL,
+	[last_seen] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [dbo].[Users]    Script Date: 3/2/2018 8:23:43 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Users](
+	[uid] [int] IDENTITY(1,1) NOT NULL,
+	[did] [int] NOT NULL,
+	[username] [nvarchar](50) NOT NULL,
+	[lid] [int] NULL,
+	[default_schema] [nvarchar](256) NULL,
+	[owned_schemas] [nvarchar](4000) NULL,
+	[role_members] [nvarchar](4000) NULL,
+	[last_seen] [nvarchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+
